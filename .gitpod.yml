@@ -1,5 +1,7 @@
 image:
   file: .gitpod.dockerfile
+ports:
+  - port: 8000
 tasks:
   - init: mysql -u root -e "create database bookstack" && 
           cp .env.example .env && 
