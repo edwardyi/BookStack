@@ -47,7 +47,7 @@ ENV PERCONA_MAJOR 5.7
 RUN apt-get update \
  && apt-get -y install gnupg2 \
  && apt-get clean && rm -rf /var/cache/apt/* /var/lib/apt/lists/* /tmp/* \
- && mkdir /var/run/mysqld \
+ && cd /var/run/mysqld \
  && wget -c https://repo.percona.com/apt/percona-release_latest.stretch_all.deb \
  && dpkg -i percona-release_latest.stretch_all.deb \
  && apt-get update
