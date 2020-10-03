@@ -8,6 +8,8 @@ RUN apt-get update \
  && apt-get -y install php-amqp php-apcu php-imagick php-memcached php-mongodb php-oauth php-redis\
  && apt-get -y install libtidy-dev \
  && apt-get clean && rm -rf /var/cache/apt/* /var/lib/apt/lists/* /tmp/*
+ 
+RUN sed -i "s/;extension=tidy/extension=tidy/g" /etc/php/7.4/cli/php.ini
 
 RUN mkdir /var/run/mysqld
 
