@@ -5,8 +5,8 @@ tasks:
           cp .env.example .env && 
           sed -i "s|APP_URL=|APP_URL=${GITPOD_WORKSPACE_URL}|g" .env && 
           sed -i "s|APP_URL=https://|APP_URL=https://8000-|g" .env && 
-          sed -i "DB_USERNAME=bookstack/DB_USERNAME=root" .env && 
-          sed -i "DB_PASSWORD=bookstack/DB_PASSWORD=" .env && 
+          sed -i "s/DB_USERNAME=bookstack/DB_USERNAME=root/g" .env && 
+          sed -i "s/DB_PASSWORD=bookstack/DB_PASSWORD=/g" .env && 
           composer install && 
           npm install -y && 
           php artisan key:generate &&
