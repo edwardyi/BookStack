@@ -5,7 +5,7 @@ USER gitpod
 USER root
 
 RUN apt-get update
-RUN apt-get install php7.4-tidy
+RUN apt-get -y install php7.4-tidy
 RUN sed -i "s/;extension=tidy/extension=tidy/g" /etc/php/7.4/cli/php.ini
 # FROM gitpod/workspace-full
 
