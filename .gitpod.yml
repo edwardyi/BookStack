@@ -8,8 +8,7 @@ ports:
 - port: 3306
   onOpen: ignore
 tasks:
-- name: Init & Logs &&
-    git config --global alias.co checkout && git config --global alias.br branch && git config --global alias.ci commit &&  git config --global alias.st status
+- name: Init & Logs 
   command: >
     ( mysqld --skip-grant-tables & ) &&
     sleep 3 &&
@@ -31,3 +30,11 @@ tasks:
     echo " * pg_stop.sh";
     echo " * mysqld &";
     echo " * mysqladmin -uroot shutdown -p";
+- name: Git ShortCut
+    git config --global alias.co checkout && git config --global alias.br branch && git config --global alias.ci commit &&  git config --global alias.st status
+- name: Composer Install
+  command: >
+    composer install
+- name: Laravel setup
+  command: >
+    php artisan migrate:install
