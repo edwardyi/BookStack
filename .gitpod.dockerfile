@@ -40,31 +40,46 @@ IncludeOptional /etc/apache2/conf-enabled/*.conf' > /etc/apache2/apache2.conf
 
 RUN a2enmod rewrite
 
-RUN echo '[mysqld_safe]\n\
-socket		= /var/run/mysqld/mysqld.sock\n\
-nice		= 0\n\
-[mysqld]\n\
-user		= gitpod\n\
-pid-file	= /var/run/mysqld/mysqld.pid\n\
-socket		= /var/run/mysqld/mysqld.sock\n\
-port		= 3306\n\
-basedir		= /usr\n\
-datadir		= /var/lib/mysql\n\
-tmpdir		= /tmp\n\
-lc-messages-dir	= /usr/share/mysql\n\
-skip-external-locking\n\
-bind-address		= 0.0.0.0\n\
-key_buffer_size		= 16M\n\
-max_allowed_packet	= 16M\n\
-thread_stack		= 192K\n\
-thread_cache_size   = 8\n\
-myisam-recover-options  = BACKUP\n\
-query_cache_limit	    = 1M\n\
-query_cache_size        = 16M\n\
-general_log_file        = /var/log/mysql/mysql.log\n\
-general_log             = 1\n\
-log_error               = /var/log/mysql/error.log\n\
-expire_logs_days	= 10\n\
-max_binlog_size     = 100M' > /etc/mysql/my.cnf
+USER root
+
+# Install MySQL
+ENV PERCONA_MAJOR 5.7
+RUN apt-get update \
+ && apt-get -y install gnupg2 \
+ && apt-get clean && rm -rf /var/cache/apt/* /var/lib/apt/lists/* /tmp/* \
+ && mkdir /var/run/mysqld \
+ && wget -c https://repo.percona.com/apt/percona-release_latest.stretch_all.deb \
+ && dpkg -i percona-release_latest.stretch_all.deb \
+ && apt-get update
+
+RUN set -ex; \
+	{ \
+		for key in \
+			percona-server-server/root_password \
+			percona-server-server/root_password_again \
+			"percona-server-server-$PERCONA_MAJOR/root-pass" \
+			"percona-server-server-$PERCONA_MAJOR/re-root-pass" \
+		; do \
+			echo "percona-server-server-$PERCONA_MAJOR" "$key" password 'nem4540'; \
+		done; \
+	} | debconf-set-selections; \
+	apt-get update; \
+	apt-get install -y \
+		percona-server-server-5.7 percona-server-client-5.7 percona-server-common-5.7 \
+	;
+	
+RUN chown -R gitpod:gitpod /etc/mysql /var/run/mysqld /var/log/mysql /var/lib/mysql /var/lib/mysql-files /var/lib/mysql-keyring
+
+# Install our own MySQL config
+COPY ./docker/mysql.cnf /etc/mysql/conf.d/mysqld.cnf
+COPY ./docker/my.cnf /home/gitpod
+RUN chown gitpod:gitpod /home/gitpod/my.cnf
+
+USER gitpod
+
+# Install default-login for MySQL clients
+COPY ./docker/client.cnf /etc/mysql/conf.d/client.cnf
+
+COPY ./docker/mysql-bashrc-launch.sh /etc/mysql/mysql-bashrc-launch.sh
 
 USER root
