@@ -51,7 +51,7 @@ All development on BookStack is currently done on the master branch. When it's t
 
 * [Node.js](https://nodejs.org/en/) v10.0+
 
-This project uses SASS for CSS development and this is built, along with the JavaScript, using webpack. The below npm commands can be used to install the dependencies & run the build tasks:
+This project uses SASS for CSS development and this is built, along with the JavaScript, using a range of npm scripts. The below npm commands can be used to install the dependencies & run the build tasks:
 
 ``` bash
 # Install NPM Dependencies
@@ -171,3 +171,7 @@ These are the great open-source projects used to help build BookStack:
 * [Draw.io](https://github.com/jgraph/drawio)
 * [Laravel Stats](https://github.com/stefanzweifel/laravel-stats)
 * [OneLogin's SAML PHP Toolkit](https://github.com/onelogin/php-saml)
+
+## Gitpodify
+
+https://github.com/edwardyi/agorakit
