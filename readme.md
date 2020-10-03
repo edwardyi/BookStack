@@ -2,6 +2,10 @@
 
 https://dev.to/obasekietinosa/gitpodifying-a-new-laravel-application-57pp
 
+# composer check required
+
+composer check-platform-reqs.
+
 # BookStack
 
 [![GitHub release](https://img.shields.io/github/release/BookStackApp/BookStack.svg)](https://github.com/BookStackApp/BookStack/releases/latest)

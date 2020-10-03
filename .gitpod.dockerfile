@@ -2,9 +2,11 @@ FROM gitpod/workspace-mysql
 
 USER gitpod
 
+USER root
+
+RUN sed -i "s/;extension=tidy/extension=tidy/g" /etc/php/7.4/cli/php.ini
 # FROM gitpod/workspace-full
 
-# USER root
 
 # RUN apt-get update \
 #  && apt-get -y install apache2 multitail postgresql postgresql-contrib mysql-server mysql-client \
