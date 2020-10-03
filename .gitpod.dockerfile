@@ -42,6 +42,7 @@ RUN a2enmod rewrite
 
 USER root
 
+RUN apt-get update
 # apt-utils for gnupg2
 RUN apt-get -y install apt-utils
 
