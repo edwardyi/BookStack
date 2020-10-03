@@ -1,3 +1,7 @@
+# Gitpodify
+
+https://dev.to/obasekietinosa/gitpodifying-a-new-laravel-application-57pp
+
 # BookStack
 
 [![GitHub release](https://img.shields.io/github/release/BookStackApp/BookStack.svg)](https://github.com/BookStackApp/BookStack/releases/latest)
