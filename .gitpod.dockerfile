@@ -42,6 +42,9 @@ RUN a2enmod rewrite
 
 USER root
 
+# apt-utils for gnupg2
+RUN apt-get -y install apt-utils
+
 # Install MySQL
 ENV PERCONA_MAJOR 5.7
 RUN apt-get update \
