@@ -45,7 +45,7 @@ USER root
 # Install MySQL
 ENV PERCONA_MAJOR 5.7
 RUN apt-get update \
- && apt-get -y install gnupg2 \
+ && apt-get install -y gnupg2 \
  && apt-get clean && rm -rf /var/cache/apt/* /var/lib/apt/lists/* /tmp/* \
  && cd /var/run/mysqld \
  && wget -c https://repo.percona.com/apt/percona-release_latest.stretch_all.deb \
