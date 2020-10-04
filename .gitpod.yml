@@ -10,6 +10,7 @@ tasks:
           sed -i "s/DB_USERNAME=bookstack/DB_USERNAME=root/g" .env && 
           sed -i "s/DB_PASSWORD=bookstack/DB_PASSWORD=/g" .env && 
           composer install && 
+          chmod -R 777  public/uploads storage/ bootstrap/cache/ && 
           npm install -y && 
           php artisan key:generate &&
           php artisan migrate --seed && 
