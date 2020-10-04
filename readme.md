@@ -2,6 +2,12 @@
 
 https://dev.to/obasekietinosa/gitpodifying-a-new-laravel-application-57pp
 
+#  BookStack Installation Guide
+
+https://www.bookstackapp.com/docs/admin/installation/
+
+https://raw.githubusercontent.com/BookStackApp/devops/master/scripts/installation-ubuntu-20.04.sh
+
 # composer check required
 
 composer check-platform-reqs.
