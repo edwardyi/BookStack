@@ -1,3 +1,7 @@
+# [經驗分享]BookStack 版本更新失敗修復方法
+
+http://blog.jason.tools/2019/07/bookstack-upgrade-fix.html
+
 # Gitpodify
 
 https://dev.to/obasekietinosa/gitpodifying-a-new-laravel-application-57pp
