@@ -7,7 +7,7 @@ USER root
 RUN apt-get update
 RUN apt-get -y install php7.4-tidy
 RUN apt-get -y install php7.4-fpm
-RUN apt-get -y install php7.4-mysql
+# RUN apt-get -y install php7.4-mysql
 # RUN apt-get -y install php7.4-mysqlnd 
 # RUN apt-get -y install php7.4-mbstring 
 # RUN apt-get -y install php7.4-xml 
@@ -16,7 +16,7 @@ RUN apt-get -y install php7.4-mysql
 # RUN apt-get -y install php7.4-zip 
 # RUN apt-get -y install php7.4-tidy 
 # RUN apt-get -y install php7.4-dom 
-RUN sed -i "s/;date.timezone =/date.timezone = Asia\/Taipei/g" /etc/php/7.4/cli/php.ini
+# RUN sed -i "s/;date.timezone =/date.timezone = Asia\/Taipei/g" /etc/php/7.4/cli/php.ini
 RUN sed -i "s/;extension=tidy/extension=tidy/g" /etc/php/7.4/cli/php.ini
 RUN sed '/extension=tidy/extension=php_tidy.dll' /etc/php/7.4/cli/php.ini
 # FROM gitpod/workspace-full
