@@ -11,6 +11,13 @@ RUN sed -i "s/;extension=tidy/extension=tidy/g" /etc/php/7.4/cli/php.ini
 RUN sed '/extension=tidy/extension=php_tidy.dll' /etc/php/7.4/cli/php.ini
 # FROM gitpod/workspace-full
 
+USER root
+
+#Copy nginx default and php-fpm.conf file
+#COPY default /etc/nginx/sites-available/default
+COPY ./docker/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
+RUN chown -R gitpod:gitpod /etc/php
+
 
 # RUN apt-get update \
 #  && apt-get -y install apache2 multitail postgresql postgresql-contrib mysql-server mysql-client \
