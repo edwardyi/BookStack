@@ -1,3 +1,7 @@
+# nginx + php-fpm in one Dockerfile?
+
+https://laracasts.com/discuss/channels/servers/nginx-php-fpm-in-one-dockerfile
+
 # gipod dockerfiles
 
 https://github.com/gitpod-io/workspace-images/blob/master/mysql/Dockerfile
