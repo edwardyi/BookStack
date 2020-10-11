@@ -5,7 +5,7 @@ USER gitpod
 USER root
 
 RUN apt-get update
-RUN apt-apt -y install nginx
+RUN apt-get -y install nginx
 RUN apt-get -y install php7.4-tidy
 RUN apt-get -y install php7.4-fpm
 # RUN apt-get -y install php7.4-mysql
